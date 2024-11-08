@@ -1,6 +1,6 @@
 // script.js
-let balance = 1000000;
-let coinPrice = 500000;
+let balance = 1.000.000;
+let coinPrice = 500.000;
 let coinPercentage = 0;
 let coinsOwned = 0;
 let coinData = [coinPrice];
@@ -16,7 +16,7 @@ setInterval(() => {
         coinPrice *= 1.01; // Naik 1%
     }
     coinData.push(coinPrice);
-    labels.push(`${labels.length * 5} detik`);
+    labels.push(`${labels.length *2} detik`);
 
     updateUI();
     updateChart();
