@@ -1,12 +1,12 @@
 // script.js
-let balance = 1.000.000;
-let coinPrice = 500.000;
+let balance = 1000000;
+let coinPrice = 500000;
 let coinPercentage = 0;
 let coinsOwned = 0;
 let coinData = [coinPrice];
 let labels = ['Start'];
 
-// Update harga koin setiap 5 detik
+// Update harga koin setiap 3 detik
 setInterval(() => {
     coinPercentage += 1;
     if (coinPercentage >= 20) {
@@ -16,11 +16,21 @@ setInterval(() => {
         coinPrice *= 1.01; // Naik 1%
     }
     coinData.push(coinPrice);
-    labels.push(`${labels.length *2} detik`);
+    labels.push(`${labels.length * 3} detik`);
 
     updateUI();
     updateChart();
-}, 5000);
+}, 3000);
+
+// Setiap 5 menit, naik 1000% lalu turun 50%
+setInterval(() => {
+    coinPrice *= 10; // Naik 1000%
+    setTimeout(() => {
+        coinPrice *= 0.5; // Turun 50%
+        updateUI();
+        updateChart();
+    }, 3000); // Turun setelah 3 detik (simulasi penurunan cepat)
+}, 300000);
 
 // Fungsi untuk memperbarui UI
 function updateUI() {
@@ -110,4 +120,4 @@ function buyItem(price) {
 }
 
 createItems();
-updateUI();
+updateUI() 
