@@ -4,6 +4,7 @@ let initialCoinPrice = 500000;
 let coinPrice = initialCoinPrice;
 let percentageIncrease = 0;
 let priceHistory = [coinPrice];
+let ownedCoins = 0;
 
 // Konfigurasi grafik
 const ctx = document.getElementById('chart').getContext('2d');
@@ -53,6 +54,30 @@ function updatePrice() {
     document.getElementById('coinPrice').innerText = `Harga Yaskoin Saat Ini: Rp ${coinPrice.toFixed(0)}`;
     document.getElementById('percentageIncrease').innerText = `Kenaikan Total: ${percentageIncrease.toFixed(1)}%`;
     updateChart();
+}
+
+// Fungsi membeli koin
+function buyCoin() {
+    if (balance >= coinPrice) {
+        balance -= coinPrice;
+        ownedCoins += 1;
+        document.getElementById('balance').innerText = `Saldo Anda: Rp ${balance.toFixed(0)}`;
+        document.getElementById('ownedCoins').innerText = `Yaskoin yang Dimiliki: ${ownedCoins}`;
+    } else {
+        alert("Saldo tidak mencukupi untuk membeli Yaskoin.");
+    }
+}
+
+// Fungsi menjual koin
+function sellCoin() {
+    if (ownedCoins > 0) {
+        balance += coinPrice;
+        ownedCoins -= 1;
+        document.getElementById('balance').innerText = `Saldo Anda: Rp ${balance.toFixed(0)}`;
+        document.getElementById('ownedCoins').innerText = `Yaskoin yang Dimiliki: ${ownedCoins}`;
+    } else {
+        alert("Anda tidak memiliki Yaskoin untuk dijual.");
+    }
 }
 
 // Jalankan interval setiap 5 detik
