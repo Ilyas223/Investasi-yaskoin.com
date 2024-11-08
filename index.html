@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investasi Yaskoin</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Web Investasi Koin Kripto</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>Investasi Yaskoin</h1>
-    <div id="balance">Saldo Anda: Rp 1.000.000</div>
-    <div id="coinPrice">Harga Yaskoin Saat Ini: Rp 500.000</div>
-    <div id="percentageIncrease">Kenaikan Total: 0%</div>
+    <div id="app">
+        <h1>Investasi Koin Kripto</h1>
+        <p>Saldo Anda: <span id="balance">1000000</span> Rupiah</p>
+        <p>Harga Koin: <span id="coinPrice">500000</span> Rupiah</p>
+        <p>Kenaikan: <span id="coinPercentage">0</span>%</p>
+        
+        <button onclick="buyCoin()">Beli Koin</button>
+        <button onclick="sellCoin()">Jual Koin</button>
 
-    <div id="actions">
-        <button onclick="buyCoin()">Buy Yaskoin</button>
-        <button onclick="sellCoin()">Sell Yaskoin</button>
+        <h2>Grafik Harga Koin</h2>
+        <canvas id="coinChart" width="400" height="200"></canvas>
+
+        <h2>Daftar Barang</h2>
+        <div id="itemList"></div>
     </div>
 
-    <div id="ownedCoins">Yaskoin yang Dimiliki: 0</div>
-    <canvas id="chart"></canvas>
-
-    <!-- Library Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
